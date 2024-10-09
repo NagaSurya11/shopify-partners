@@ -1,7 +1,7 @@
 import { ProductModel } from "../models";
 import { GetTotalAndDiscountPriceInput, IProduct, OProduct } from "../types/interfaces";
 import { ListProductsInput } from "../types/interfaces/list-products-input.interface";
-import { Op, WhereOptions } from 'sequelize';
+import { col, fn, Op, WhereOptions } from 'sequelize';
 import { betweenInputValidator } from "../validators";
 
 async function AddProducts(product: OProduct[]) {
@@ -122,11 +122,30 @@ async function GetTotalPriceAndDiscountPrice(input: GetTotalAndDiscountPriceInpu
     return { totalPrice, discountPrice: totalPrice - ((totalPrice * input.discount_percentage) / 100) };
 }
 
+async function GetMainCategories() {
+    const response = await ProductModel.findAll({
+        attributes: [[fn('DISTINCT', col('main_category')), 'main_category']],
+        raw: true
+    });
+    return response.map(product => product.main_category);
+}
+
+async function GetSubCategories(main_category: string) {
+    const response = await ProductModel.findAll({
+        where: { main_category },
+        attributes: [[fn('DISTINCT', col('sub_category')), 'sub_category']],
+        raw: true
+    });
+    return response.map(product => product.sub_category);
+}
+
 export const ProductController = {
     AddProducts,
     AddProduct,
     FetchProducts,
     GetProductById,
     UpdateProduct,
-    GetTotalPriceAndDiscountPrice
+    GetTotalPriceAndDiscountPrice,
+    GetMainCategories,
+    GetSubCategories
 }

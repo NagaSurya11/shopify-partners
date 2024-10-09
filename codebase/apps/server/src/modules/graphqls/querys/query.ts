@@ -1,5 +1,5 @@
 import { GraphQLObjectType } from "graphql";
-import { GetProductById, GetTotalPriceAndDiscountPrice, ListProducts } from "./product.queries";
+import { GetMainCategories, GetSubCategories , GetProductById, GetTotalPriceAndDiscountPrice, ListProducts } from "./product.queries";
 import { GetBundleById, ListBundles, OrderBundle } from "./bundle.queries";
 import { GetTotalSoldAndRevenueByPriceAreaChartData, GetTotalSoldByPriceScatteredChartData, GetTotalSoldByPriceBarOrPieChartData } from "./chart.queries";
 
@@ -14,6 +14,8 @@ export const query = new GraphQLObjectType({
         ListBundles,
         GetTotalSoldByPriceBarOrPieChartData,
         GetTotalSoldByPriceScatteredChartData,
-        GetTotalSoldAndRevenueByPriceAreaChartData
+        GetTotalSoldAndRevenueByPriceAreaChartData,
+        GetMainCategories,
+        GetSubCategories
     }
 })
