@@ -1,0 +1,189 @@
+{
+  "BUNDLE_SUMMARY": {
+    "FORMFIELD": {
+      "ACTUAL_PRICE": "Actual price {{currencySymbol}}",
+      "DISCOUNT": "Discount %",
+      "NAME": "Bundle name",
+      "TOTAL_PRICE": "Total price {{currencySymbol}}"
+    },
+    "INFO": "Update the quantity in below table to meet your requirements and enter the information. The maximum bundle total price should be {{currencySymbol}} {{maxPrice}}.",
+    "TABLE": {
+      "FOOTER": {
+        "ACTION_BTN": "Remove from bundle"
+      },
+      "HEADER": {
+        "RESET_TABLE": "Reset Table",
+        "TITLE": "Bundle"
+      }
+    },
+    "TITLE": "Bundle information"
+  },
+  "CREATE_BUNDLE": {
+    "ALERTS": {
+      "CANCEL_TEXT": "Cancel",
+      "CONFIRM_TEXT": "Replace",
+      "CONTENT_TEXT": "The maximum number of products per bundle is 500. Do you want to replace with selection?",
+      "DIALOG_TITLE": "Maximum Bundle Limit Reached!"
+    },
+    "BTN_TEXT": "Create bundle",
+    "INFO": "Select products and add to bundle to be reflected in the bundle table.",
+    "LIST_PRODUCTS": {
+      "FOOTER": {
+        "ACTION_BTN_TEXT": "Add selected products to bundle"
+      },
+      "TABLE_BODY": {
+        "COLUMN": {
+          "ACTUAL_PRICE": "Actual price",
+          "MAIN_CATEGORY": "Main category",
+          "NAME": "Name",
+          "NO_OF_RATINGS": "No. of ratings",
+          "QUANTITY": "Quantity",
+          "RATINGS": "Ratings",
+          "SUB_CATEGORY": "Sub category"
+        }
+      },
+      "TABLE_FILTER": {
+        "FILTER_OPTIONS": {
+          "CATEGORY_FILTER": "Category filter",
+          "PRICE_FILTER": "Actual Price filter",
+          "RATINGS_FILTER": "Ratings filter"
+        },
+        "TITLE": "Products filter"
+      },
+      "TABLE_HEADER": {
+        "ACTIONS": {
+          "RESET_TABLE": "Reset Table",
+          "SELECT_ALL_FILTERED_PRODUCTS": "Select all filtered products"
+        },
+        "TITLE": "Products"
+      },
+      "TABLE_ROW": {
+        "ACTIONS": {
+          "SELECT_PRODUCT": "Select Product",
+          "VIEW_DETAILS": "View details"
+        }
+      },
+      "VIEW_DETAILS": {
+        "DIALOG": {
+          "CANCEL_TEXT": "Cancel",
+          "CONFIRM_TEXT": "Select Product",
+          "TITLE": "Product Details"
+        }
+      }
+    },
+    "TITLE": "Create bundle"
+  },
+  "DASHBOARD": {
+    "BUNDLE_TABLE": {
+      "COLUMNS": {
+        "BUNDLE_PRICE": "Bundle price",
+        "DISCOUNT_PERCENTAGE": "Discount %",
+        "NAME": "Name",
+        "TOTAL_SOLD": "Total sold"
+      },
+      "DELETE_BUNDLE": {
+        "DIALOG": {
+          "CANCEL_TEXT": "Cancel",
+          "CONFIRM_TEXT": "Delete",
+          "CONTEXT_TEXT": "Deleting this bundle(s) will result in the deletion of all connected records. Do you want to delete?",
+          "TITLE": "Delete Bundle(s)"
+        }
+      },
+      "FILTER": {
+        "DISCOUNT_FILTER": "Discount filter",
+        "PRICE_FILTER": "Price filter",
+        "TITLE": "Bundle filter",
+        "TOTAL_SOLD_FILTER": "Total sold filter"
+      },
+      "FOOTER": {
+        "ACTION_BTN": "Delete selected bundles"
+      },
+      "HEADER": {
+        "ACTIONS": {
+          "RESET_TABLE": "Reset Table"
+        }
+      },
+      "ROW_ACTION": {
+        "DELETE": "Delete",
+        "MANAGE": "Manage",
+        "SELECT": "Select",
+        "VIEW_DETAILS": "View Details"
+      },
+      "TITLE": "Bundles",
+      "VIEW_DETAILS": {
+        "DIALOG": {
+          "CANCEL_TEXT": "Cancel",
+          "CONFIRM_TEXT": "Confirm",
+          "TITLE": "Bundle Details"
+        }
+      }
+    },
+    "CHART": {
+      "LABEL": {
+        "BUNDLE_PRICE": "Bundle price",
+        "REVENUE": "Revenue",
+        "TOTAL_SOLD": "Total sold"
+      },
+      "TOTAL_SOLD_BY_PRICE_RANGE_BAR": "Total sold vs Price range (Bar chart)",
+      "TOTAL_SOLD_BY_PRICE_RANGE_BY_REVENUE": "Total sold vs Price vs Revenue (Scattered chart)",
+      "TOTAL_SOLD_BY_PRICE_RANGE_PIE": "Total sold vs Price range (Pie chart)",
+      "TOTAL_SOLD_VS_REVENUE_BY_PRICE_RANGE_AREA_CHART": "Total Sold vs Revenue vs Price range (Area chart)"
+    }
+  },
+  "EDIT_BUNDLE": {
+    "BTN_TEXT": "Update bundle",
+    "INFO": "Edit the bundle to meet your needs. Note: Editing the bundle will delete all order history.",
+    "SEARCH_BUNDLE": {
+      "NO_DATA": "No bundles found",
+      "PLACEHOLDER": "Enter value"
+    },
+    "SEARCH_BUNDLE_LABEL": "Search bundle",
+    "TITLE": "Edit Bundle"
+  },
+  "HEADER": {
+    "MENU_ICON": {
+      "TOOLTIP": {
+        "COLLAPSE": "Collapse",
+        "EXPAND": "Expand"
+      }
+    },
+    "PROFILE": {
+      "MENUITEMS": {
+        "CHOOSE_LANGUAGE": "Choose Language",
+        "LANGUAGES": {
+          "ENGLISH_US": "English (US)",
+          "GERMAN_GERMANY": "German (Germany)"
+        },
+        "LOGOUT": "Logout"
+      }
+    }
+  },
+  "SIDENAV": {
+    "LISTITEMS": {
+      "CREATE_BUNDLE": "Create Bundle",
+      "DASHBOARD": "Dashboard",
+      "EDIT_BUNDLE": "Edit Bundle"
+    }
+  },
+  "TABLE": {
+    "NO_DATA": "No Data!"
+  },
+  "TABLE_FILTER": {
+    "CANCEL_TEXT": "Cancel",
+    "CONFIRMATION_TEXT": "Apply",
+    "SELECT_ALL": "Select all"
+  },
+  "TABLE_FOOTER": {
+    "ROWS_PER_PAGE": "Rows per page: "
+  },
+  "TABLE_HEADER": {
+    "SEARCH_INPUT": {
+      "PLACEHOLDER": "Search"
+    }
+  },
+  "VIEW_DETAILS": {
+    "DISCOUNT_PERCENTAGE": "Discount",
+    "NO_OF_RATINGS": "ratings",
+    "TOTAL_SOLD": "Total items sold"
+  }
+}

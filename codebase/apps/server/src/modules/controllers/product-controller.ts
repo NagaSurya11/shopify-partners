@@ -1,6 +1,6 @@
 import { ProductModel } from "../models";
 import { GetTotalAndDiscountPriceInput, IProduct, OProduct } from "../types/interfaces";
-import { ListProductsInput } from "../types/interfaces/list-products-input.interface";
+import { ListProductsInput, ProductFilterInput } from "../types/interfaces/list-products-input.interface";
 import { col, fn, Op, WhereOptions } from 'sequelize';
 import { betweenInputValidator } from "../validators";
 
@@ -59,6 +59,9 @@ async function FetchProducts(input: ListProductsInput) {
 
         // productIds filter
         if (!!input.filter.selectedProductIds && input.filter.selectedProductIds.length > 0) {
+            if (input.filter.selectedProductIds.length > 500) {
+                throw new Error('Maximum 500 productIds you can pass!');
+            }
             where['product_id'] = {
                 [Op.in]: input.filter.selectedProductIds
             }
@@ -122,21 +125,103 @@ async function GetTotalPriceAndDiscountPrice(input: GetTotalAndDiscountPriceInpu
     return { totalPrice, discountPrice: totalPrice - ((totalPrice * input.discount_percentage) / 100) };
 }
 
-async function GetMainCategories() {
+async function GetMainCategories(selectedProductIds?: Array<string>) {
+    let where: WhereOptions<OProduct> = {};
+    if (!!selectedProductIds && selectedProductIds.length > 0) {
+        where['product_id'] = {
+            [Op.in]: selectedProductIds
+        }
+    }
     const response = await ProductModel.findAll({
+        where,
         attributes: [[fn('DISTINCT', col('main_category')), 'main_category']],
         raw: true
     });
     return response.map(product => product.main_category);
 }
 
-async function GetSubCategories(main_category: string) {
+async function GetSubCategories(main_category: string, selectedProductIds?: string[]) {
+    let where: WhereOptions<OProduct> = {};
+    if (!!selectedProductIds && selectedProductIds.length > 0) {
+        where['product_id'] = {
+            [Op.in]: selectedProductIds
+        }
+    }
+    where['main_category'] = {
+        [Op.eq]: main_category
+    };
+    console.log(where);
     const response = await ProductModel.findAll({
-        where: { main_category },
+        where: where,
         attributes: [[fn('DISTINCT', col('sub_category')), 'sub_category']],
         raw: true
     });
     return response.map(product => product.sub_category);
+}
+
+async function FetchAllProductIds(filter: ProductFilterInput) {
+    let where: WhereOptions<OProduct> = {};
+
+    if (filter) {
+        //  filter categories
+        let categoryFilters: {
+            main_category: string;
+            sub_category: {
+                [Op.in]: string[];
+            };
+        }[] = [];
+        if (filter.categories && filter.categories.length > 0) {
+            categoryFilters = filter.categories.map(category => ({
+                main_category: category.name,
+                sub_category: {
+                    [Op.in]: category.subCategories  // Matches any of the subcategories provided
+                }
+            }));
+        }
+        if (!!categoryFilters && categoryFilters.length > 0) {
+            where = {
+                [Op.or]: categoryFilters
+            }
+        }
+
+        // filter price
+        if (filter.actualPrice) {
+            const { from, to } = filter.actualPrice;
+            betweenInputValidator(from, to);
+            where['actual_price'] = {
+                [Op.gte]: from,
+                [Op.lte]: to
+            };
+        }
+
+        // filter ratings
+        if (filter.ratings) {
+            const { from, to } = filter.ratings;
+            betweenInputValidator(from, to);
+            where['ratings'] = {
+                [Op.gte]: from,
+                [Op.lte]: to
+            };
+        }
+
+        // productIds filter
+        if (!!filter.selectedProductIds && filter.selectedProductIds.length > 0) {
+            where['product_id'] = {
+                [Op.in]: filter.selectedProductIds
+            }
+        }
+    }
+
+    const response = await ProductModel.findAll({
+        where,
+        attributes: ['product_id']
+    });
+
+    if (response.length > 500) {
+        throw new Error('Cannot filter products more than 500');
+    }
+
+    return response.map(product => product.product_id);
 }
 
 export const ProductController = {
@@ -147,5 +232,6 @@ export const ProductController = {
     UpdateProduct,
     GetTotalPriceAndDiscountPrice,
     GetMainCategories,
-    GetSubCategories
+    GetSubCategories,
+    FetchAllProductIds
 }

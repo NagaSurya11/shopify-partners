@@ -22,11 +22,13 @@ class AuthServiceClass implements SHasEventsInterface<AuthEvents, AuthProviderSt
         this.events.next({type: AuthEvents.TOKEN_EXPIRED});
     }
 
-    private dispatchOnAdapterReady(authenticated: boolean) {
+    private async dispatchOnAdapterReady(authenticated: boolean) {
+        const userProfile = await this.keyClock.loadUserProfile();
         this.events.next({type: AuthEvents.ADAPTER_INITIALIZED, payload: {
             isAuthenticated: authenticated,
             getToken: this.getToken.bind(this),
-            logout: this.logout.bind(this)
+            logout: this.logout.bind(this),
+            userProfile
         }});
     }
 

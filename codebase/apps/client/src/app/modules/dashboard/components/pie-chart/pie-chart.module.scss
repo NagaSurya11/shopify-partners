@@ -1,0 +1,15 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+@media screen and (max-width: 420px) {
+    .container {
+        position: absolute;
+        object-fit: contain;
+        right: 4rem;
+    }
+}

@@ -1,0 +1,61 @@
+{
+  "CREATE_BUNDLE": {
+    "LIST_PRODUCTS": {
+      "TABLE_BODY": {
+        "COLUMN": {
+          "ACTUAL_PRICE": "Tatsächlicher Preis",
+          "MAIN_CATEGORY": "Hauptkategorie",
+          "NAME": "Name",
+          "NO_OF_RATINGS": "Anzahl der Bewertungen",
+          "RATINGS": "Bewertungen",
+          "SUB_CATEGORY": "Unterkategorie"
+        }
+      },
+      "TABLE_HEADER": {
+        "ACTIONS": {
+          "RESET_TABLE": "Tabelle zurücksetzen",
+          "SELECT_ALL_FILTERED_PRODUCTS": "Wählen Sie alle gefilterten Produkte aus"
+        },
+        "TITLE": "Produkte"
+      },
+      "TABLE_ROW": {
+        "ACTIONS": {
+          "SELECT_PRODUCT": "Wählen Sie Produkt aus",
+          "VIEW_DETAILS": "Details anzeigen"
+        }
+      }
+    }
+  },
+  "HEADER": {
+    "MENU_ICON": {
+      "TOOLTIP": {
+        "COLLAPSE": "Zusammenbruch",
+        "EXPAND": "Expandieren"
+      }
+    },
+    "PROFILE": {
+      "MENUITEMS": {
+        "CHOOSE_LANGUAGE": "Wählen Sie Sprache",
+        "LANGUAGES": {
+          "ENGLISH_US": "Englisch (USA)",
+          "GERMAN_GERMANY": "Deutsch (Deutschland)"
+        },
+        "LOGOUT": "Abmelden"
+      }
+    }
+  },
+  "SIDENAV": {
+    "LISTITEMS": {
+      "CREATE_BUNDLE": "Bundle erstellen",
+      "DASHBOARD": "Armaturenbrett"
+    }
+  },
+  "TABLE_FOOTER": {
+    "ROWS_PER_PAGE": "Zeilen pro Seite: "
+  },
+  "TABLE_HEADER": {
+    "SEARCH_INPUT": {
+      "PLACEHOLDER": "Suchen"
+    }
+  }
+}

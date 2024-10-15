@@ -1,6 +1,6 @@
 import { GraphQLObjectType } from "graphql";
 import { AddProduct, AddProducts, UpdateProduct } from "./product.mutation";
-import { CreateBundle } from "./bundle.mutation";
+import { CreateBundle, DeleteBundles, UpdateBundle } from "./bundle.mutation";
 
 export const mutation = new GraphQLObjectType({
     name: 'Mutation',
@@ -8,6 +8,8 @@ export const mutation = new GraphQLObjectType({
         AddProduct,
         AddProducts,
         UpdateProduct,
-        CreateBundle
+        CreateBundle,
+        DeleteBundles,
+        UpdateBundle
     }
 });

@@ -3,6 +3,8 @@ import { BundleModel, BundleProductModel, ProductModel } from "../models";
 import { CreateBundleInput, ListBundleInput, OBundle } from "../types/interfaces";
 import { ProductController } from "./product-controller";
 import { betweenInputValidator } from "../validators";
+import { sequelize } from '../db/sequelize';
+import { isEqual } from 'lodash';
 
 async function GetBundleById(bundle_id: string) {
     const response = await BundleModel.findOne({
@@ -24,11 +26,74 @@ async function GetBundleById(bundle_id: string) {
     return response;
 }
 
+async function UpdateBundle(input: CreateBundleInput, bundle_id: string) {
+    const bundle = await GetBundleById(bundle_id);
+    if (!isEqual(bundle.name, input.name)) {
+        await CheckForDuplicateName(input.name);
+    }
+
+    const { discountPrice } = await ProductController.GetTotalPriceAndDiscountPrice({
+        products: input.products,
+        discount_percentage: input.discount_percentage
+    });
+
+    const transaction = await sequelize.transaction();
+    try {
+        // remove existing products
+        await BundleProductModel.destroy({
+            where: {
+                bundle_id: {
+                    [Op.eq]: bundle_id
+                }
+            },
+            transaction
+        });
+
+        // insert new products
+        await BundleProductModel.bulkCreate(
+            input.products.map(product => ({
+                ...product,
+                bundle_id: bundle_id
+            })), 
+            { transaction }
+        );
+
+        // update bundle details
+        await BundleModel.update(
+            {
+                bundle_price: discountPrice, // Using the calculated discountPrice
+                discount_percentage: input.discount_percentage,
+                name: input.name,
+                total_sold: BigInt(0)
+            },
+            {
+                where: { bundle_id },
+                transaction // Add transaction here
+            }
+        );
+
+        // commit the transaction
+        await transaction.commit();
+
+        // fetch the updated bundle
+        const updatedBundle = await GetBundleById(bundle_id);
+        return updatedBundle;
+    } catch (error) {
+        // rollback in case of error
+        await transaction.rollback();
+        console.error('Error updating bundle:', error);
+        throw new Error('UPDATE_FAILED');
+    }
+}
+
+
 async function CreateBundle(input: CreateBundleInput) {
 
     if (!input.products || input.products.length === 0) {
         throw new Error(`Cannot create bundle without products!`);
     }
+
+    await CheckForDuplicateName(input.name);
 
     const { discountPrice } = await ProductController.GetTotalPriceAndDiscountPrice({
         products: input.products,
@@ -102,9 +167,68 @@ async function OrderBundle(bundle_id: string) {
     return GetBundleById(bundle_id);
 }
 
+async function CheckForDuplicateName(name: string) {
+    if (await BundleModel.findOne({ where: { name } })) {
+        throw new Error(`Bundle ${name} already exists!`);
+    }
+}
+
+async function DeleteBundles(bundleIds: string[]) {
+    if (!!bundleIds && bundleIds.length > 0) {
+        const transaction = await sequelize.transaction();
+
+        try {
+            // Destroy entries in BundleProductModel
+            await BundleProductModel.destroy({
+                where: {
+                    bundle_id: {
+                        [Op.in]: bundleIds
+                    }
+                },
+                transaction
+            });
+
+            // Destroy entries in BundleModel
+            await BundleModel.destroy({
+                where: {
+                    bundle_id: {
+                        [Op.in]: bundleIds
+                    }
+                },
+                transaction
+            });
+
+            await transaction.commit();
+            return 'BUNDLES_DELETED_SUCCESSFULLY!';
+        } catch (error) {
+            await transaction.rollback();
+            throw new Error('DELETE_FAILED');
+        }
+    } else {
+        throw new Error('NO_IDS_PROVIDED');
+    }
+}
+
+async function SearchBundlesByName(searchTerm: string) {
+    let where: WhereOptions<OBundle> = {};
+    where['name'] = {
+        [Op.iLike]: `${searchTerm}%`
+    }
+    return await BundleModel.findAll({
+        where,
+        limit: 20,
+        order: [['name', 'ASC']],
+        attributes: ['bundle_id', 'name']
+    });
+}
+
 export const BundleController = {
     CreateBundle,
     GetBundleById,
     OrderBundle,
-    FetchBundles
+    FetchBundles,
+    CheckForDuplicateName,
+    DeleteBundles,
+    SearchBundlesByName,
+    UpdateBundle
 }

@@ -1,12 +1,13 @@
 import { GraphQLObjectType } from "graphql";
-import { GetMainCategories, GetSubCategories , GetProductById, GetTotalPriceAndDiscountPrice, ListProducts } from "./product.queries";
-import { GetBundleById, ListBundles, OrderBundle } from "./bundle.queries";
+import { GetMainCategories, GetSubCategories , GetProductById, GetTotalPriceAndDiscountPrice, ListProducts, FetchAllProductIds } from "./product.queries";
+import { GetBundleById, ListBundles, OrderBundle, SearchBundles } from "./bundle.queries";
 import { GetTotalSoldAndRevenueByPriceAreaChartData, GetTotalSoldByPriceScatteredChartData, GetTotalSoldByPriceBarOrPieChartData } from "./chart.queries";
 
 export const query = new GraphQLObjectType({
     name: 'Query',
     fields: {
         ListProducts,
+        FetchAllProductIds,
         GetProductById,
         GetBundleById,
         OrderBundle,
@@ -16,6 +17,7 @@ export const query = new GraphQLObjectType({
         GetTotalSoldByPriceScatteredChartData,
         GetTotalSoldAndRevenueByPriceAreaChartData,
         GetMainCategories,
-        GetSubCategories
+        GetSubCategories,
+        SearchBundles
     }
 })

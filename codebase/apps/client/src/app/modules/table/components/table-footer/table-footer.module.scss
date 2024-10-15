@@ -1,0 +1,23 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+.container {
+    display: flex;
+    place-items: center;
+    border-top: 1px solid var(--border);
+    flex-direction: row-reverse;
+    padding: 0rem .9rem;
+
+    &.space-between {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .rows-per-page-label {
+        padding-bottom: 2px;
+    }
+}

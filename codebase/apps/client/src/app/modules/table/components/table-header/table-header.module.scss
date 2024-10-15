@@ -1,0 +1,76 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+.container {
+    display: flex;
+    place-items: center;
+    border-bottom: 1px solid var(--border);
+    justify-content: space-between;
+    padding: .5rem 1rem;
+
+    >.left-section {
+        >.title {
+            font-weight: 900;
+            font-size: 16px;
+            color: var(--text-1);
+        }
+    }
+
+    >.right-section {
+        display: flex;
+        place-items: center;
+        gap: 4px;
+
+        >.search-container {
+
+            .clear-icon {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &.edit-mode {
+        background: var(--primary-1);
+
+        >.left-section {
+            display: flex;
+            place-items: center;
+            gap: 1rem;
+
+            >.button {
+                color: var(--text-4);
+                border-color: var(--border-white);
+                font-size: 12px;
+                font-weight: 900;
+                cursor: pointer;
+
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        >.right-section {
+
+            .icon-btn {
+                color: var(--text-4);
+            }
+
+            .search-container {
+
+                ::before, ::after {
+                    border-bottom-color: var(--border-white);
+                }
+
+                input {
+                    color: var(--text-4);
+                }
+            }
+        }
+    }
+}

@@ -78,7 +78,7 @@ export async function initProductModel(sequelize: Sequelize) {
             ]
         }
     );
-    await ProductModel.sync({ force: false, alter: true });
+    await ProductModel.sync({ force: false, alter: false });
 }
 
 

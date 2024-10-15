@@ -1,0 +1,78 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+.container {
+    max-height: 440px;
+
+    .no-data-text {
+        display: flex;
+        width: 100%;
+        height: 200px;
+        place-content: center;
+        place-items: center;
+        font-size: 20px;
+        background: var(--panel);
+    }
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 15vw;
+        padding: 0px 16px;
+    }
+
+    .table-header-cell {
+        background: var(--panel);
+        padding: 0px 16px;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--text-2);
+        white-space: nowrap;
+    }
+
+    .checkbox, .row-checkbox {
+        padding: 0px;
+        position: sticky;
+        left: 0;
+        z-index: 3;
+        max-width: 38px;
+        max-height: 38px;
+    }
+
+    .row-checkbox {
+        background: #fff;
+        z-index: 1;
+    }
+
+    .action, .action-row {
+        padding: 0px;
+        position: sticky;
+        right: 0;
+        z-index: 3;
+        width: 20px;
+    }
+
+    .action-row {
+        background: #fff;
+        z-index: 1;
+    }
+
+    .data-row {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .quantity-input-container {
+        max-width: 110px;
+
+        .icon-btn {
+            cursor: pointer;
+        }
+    }
+}

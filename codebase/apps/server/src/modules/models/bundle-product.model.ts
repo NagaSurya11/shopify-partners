@@ -69,5 +69,5 @@ export async function initBundleProductModel(sequelize: Sequelize) {
     BundleModel.belongsToMany(ProductModel, { through: BundleProductModel, foreignKey: 'bundle_id' });
     ProductModel.belongsToMany(BundleModel, { through: BundleProductModel, foreignKey: 'product_id' });
 
-    await BundleProductModel.sync({ force: true, alter: true });
+    await BundleProductModel.sync({ force: false, alter: false });
 }

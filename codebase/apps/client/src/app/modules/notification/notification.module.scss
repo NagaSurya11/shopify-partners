@@ -1,0 +1,27 @@
+@import '../../../styles.scss';
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+.container.light-theme {
+
+    @include light-theme-props();
+
+    .alert-background {
+
+        &.success {
+            background: var(--success);
+        }
+
+        &.error {
+            background: var(--error);
+        }
+
+        &.warning {
+            background: var(--warning);
+        }
+    }
+}

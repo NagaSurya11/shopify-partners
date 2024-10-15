@@ -1,0 +1,95 @@
+
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+.view-details {
+    padding: 0.5rem;
+
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        place-items: center;
+
+        .title {
+            font-size: 16px;
+            font-weight: 900;
+            padding: 0px;
+            line-height: 40px;
+            margin-left: 1rem;
+        }
+    }
+
+    .dialog-content {
+        width: 290px;
+        height: 320px;
+        overflow: auto;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        gap: 0.3rem;
+
+        .bread-crumb-text {
+            font-size: 14px;
+            color: var(--text-2);
+            font-weight: 500;
+        }
+
+        .carousel {
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+            place-items: center;
+            gap: .5rem;
+
+            .image-container {
+                position: relative;
+                height: 180px;
+                width: 285px;
+                overflow: hidden;
+                border: 1px solid var(--border);
+
+                .image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    transition: transform 0.5s ease-in-out;
+                }
+
+            }
+
+        }
+
+        .name-text, .price-text {
+            font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .ratings-container {
+            display: flex;
+            place-items: center;
+            gap: 8px;
+
+            .no-of-ratings-text {
+                font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        place-items: center;
+        justify-content: space-between;
+        padding: .5rem 1rem;
+    }
+}

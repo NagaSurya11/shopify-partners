@@ -1,0 +1,32 @@
+@import '../../../styles.scss';
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+.main.light-theme {
+    display: grid;
+    background-color: var(--background);
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 4.5rem 1fr;
+
+    >.main-container {
+        display: grid;
+        grid-template-columns: 65px auto;
+        transition: grid-template-columns 0.3s ease;
+
+        &.expanded {
+            grid-template-columns: 200px auto;
+        }
+
+        >.layout {
+            padding: 1rem;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+    }
+}

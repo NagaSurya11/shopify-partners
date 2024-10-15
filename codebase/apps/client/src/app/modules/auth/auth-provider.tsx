@@ -10,7 +10,7 @@ import { AuthEvents } from './types/enums/auth-event.enums';
 export class AuthProvider extends Component<AuthProviderProps, AuthProviderState> {
   private $destroy: Subject<void>;
   private authService;
-  constructor(props: any) {
+  constructor(props: AuthProviderProps) {
     super(props);
     this.$destroy = new Subject();
     this.state = initialAuthProviderState;
@@ -20,7 +20,7 @@ export class AuthProvider extends Component<AuthProviderProps, AuthProviderState
   private handleAuthEvents(event: SCustomEvent<AuthEvents>) {
     switch (event.type) {
       case AuthEvents.ADAPTER_INITIALIZED:
-        console.log(event.payload.getToken());
+        console.log(event.payload.getToken())
         this.setState(event.payload);
         break;
       case AuthEvents.TOKEN_EXPIRED:

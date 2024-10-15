@@ -11,6 +11,9 @@ export const TotalSoldByPriceScatteredChartData = new GraphQLObjectType({
         },
         revenue: {
             type: new GraphQLNonNull(GraphQLFloat)
+        },
+        fill: {
+            type: GraphQLString
         }
     }
 });

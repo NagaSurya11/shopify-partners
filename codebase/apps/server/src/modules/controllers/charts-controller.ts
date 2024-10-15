@@ -1,7 +1,11 @@
 import { cast, col, DataTypes, fn, QueryTypes, Sequelize } from "sequelize";
 import { BundleModel } from "../models";
-import { TotalSoldByPrice } from "../types/interfaces";
+import { TotalSoldByPriceBarOrPieChart, TotalSoldByPriceScatteredChartData } from "../types/interfaces";
 
+function getRandomColor() {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  return `#${randomColor.padStart(6, '0')}`;
+}
 
 async function GetTotalSoldByPriceBarOrPieChartData() {
     const orderMap = new Map<string, number>();
@@ -28,7 +32,7 @@ async function GetTotalSoldByPriceBarOrPieChartData() {
         ]) AS name
     `;
 
-    const response: TotalSoldByPrice = await BundleModel.sequelize.query(`
+    const response: TotalSoldByPriceBarOrPieChart = await BundleModel.sequelize.query(`
   SELECT
     names.name,
     COALESCE(SUM(b.total_sold), 0) AS total_sold
@@ -53,12 +57,17 @@ async function GetTotalSoldByPriceBarOrPieChartData() {
   GROUP BY
     names.name
 `, { type: QueryTypes.SELECT });
-    response.sort((a, b) => orderMap.get(a.name) - orderMap.get(b.name));
-    return response;
+    return response
+      .sort((a, b) => orderMap.get(a.name) - orderMap.get(b.name))
+      .map(({name, total_sold}) => ({
+        name,
+        total_sold,
+        fill: getRandomColor()
+      }));
 }
 
 async function TotalSoldByPriceScatteredChartData() {
-    return await BundleModel.sequelize.query(`
+    const response: TotalSoldByPriceScatteredChartData = await BundleModel.sequelize.query(`
         SELECT
           bundle_price,
           total_sold,
@@ -71,6 +80,12 @@ async function TotalSoldByPriceScatteredChartData() {
           bundle_price,
           total_sold
       `, { type: QueryTypes.SELECT });
+    return response.map(({bundle_price, total_sold, revenue}) => ({
+      bundle_price,
+      total_sold,
+      revenue,
+      fill: getRandomColor()
+    }));
 }
 
 async function TotalSoldAndRevenueByPriceAreaChartData() {

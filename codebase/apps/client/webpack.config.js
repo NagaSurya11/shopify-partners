@@ -2,6 +2,7 @@ const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
 const { NxReactWebpackPlugin } = require('@nx/react/webpack-plugin');
 const { join } = require('path');
 
+
 module.exports = {
   output: {
     path: join(__dirname, '../../dist/apps/client'),
@@ -30,6 +31,6 @@ module.exports = {
       // Uncomment this line if you don't want to use SVGR
       // See: https://react-svgr.com/
       // svgr: false
-    }),
+    })
   ],
 };

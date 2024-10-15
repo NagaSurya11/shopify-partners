@@ -1,0 +1,39 @@
+@mixin light-theme-props() {
+    --text-1: rgb(33, 33, 33);
+    --text-2: rgb(102, 102, 102);
+    --text-3: rgb(158, 158, 158);
+    --text-4: #fff;
+    --background: rgb(255 255 255);
+    --panel: rgb(246 241 241);
+    --border: rgb(0 0 0 / 20%);
+    --border-white: #fff;
+    --primary-1: rgb(25 118 210);
+    --primary-2: rgb(25 118 210 / 50%);
+    --primary-3: rgb(25 118 210 / 20%);
+    --warning: rgb(255 187 0 / 70%);
+    --error: rgb(238 43 73 / 80%);
+    --success: rgb(42 196 100);
+    --jeans: rgb(100, 139, 168);
+    --secondary-1: rgb(255, 139, 92);
+    --secondary-2: rgb(251, 223, 51);
+    --secondary-3: rgb(255, 114, 216);
+}
+
+@mixin dark-theme-props() {
+    --text-1: rgb(224, 224, 224);
+    --text-2: rgb(160, 160, 160);
+    --text-3: rgb(108, 108, 108);
+    --background: rgba(18, 18, 18, 1);
+    --panel: rgba(34, 34, 34, 1);
+    --border: rgb(39, 39, 39);
+    --primary-1: rgb(51 153 255 / 100%);
+    --primary-2: rgb(12 26 39);
+    --primary-3: rgb(51 153 255 / 30%);
+    --warning: rgb(190 151 42);
+    --error: rgb(167, 40, 47);
+    --success: rgb(48, 144, 83);
+    --jeans: rgb(86, 118, 143);
+    --secondary-1: rgb(224, 108, 61);
+    --secondary-2: rgb(220, 192, 20);
+    --secondary-3: rgb(224, 83, 185);
+}

@@ -10,3 +10,4 @@ export const keyCloakInitOptions: KeycloakInitOptions = {
     onLoad: 'login-required',
     checkLoginIframe: false
 }
+

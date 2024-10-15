@@ -1,0 +1,147 @@
+
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+*{
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+.container {
+    padding: .5rem;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        place-items: center;
+
+        .title {
+            font-size: 16px;
+            font-weight: 900;
+            padding: 0px;
+            line-height: 40px;
+            margin-left: 1rem;
+        }
+    }
+
+    .dialog-content {
+        width: 290px;
+        height: 300px;
+        overflow: hidden;
+        padding: 0;
+
+        .main-list {
+            .main-list-item {
+                display: flex;
+                place-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .sub-header {
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            place-items: center;
+            border-bottom: 1px solid rgb(0 0 0 / 20%);
+        }
+
+        .sub-main {
+            display: flex;
+            place-content: center;
+            flex-direction: column;
+            padding: .5rem;
+            gap: .5rem;
+
+            .sub-list {
+                .select-all-section {
+                    display: flex;
+                    place-items: center;
+                    gap: .7rem;
+                    font-size: 12px;
+                    font-weight: 400;                
+                    color: #000;
+                    line-height: 30px;
+                    border-bottom: 1px solid rgb(0, 0, 0, 40%);
+
+                    .select-all-checkbox {
+                        padding: 0px;
+                    }
+                }
+
+                .selection-list {
+                    height: 180px;
+                    overflow-y: auto;
+                    padding: 0px;
+
+                    .list-item {
+                        padding: 0px;
+                        border-bottom: 1px solid rgb(0, 0, 0, 20%);
+
+                        .list-item-text {
+                            display: flex;
+                            place-items: center;
+                            justify-content: space-between;
+
+                            .value {
+                                color: #000;
+                            }
+
+                            .count {
+                                padding: 3px 10px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                flex-shrink: 0;
+                                display: flex;
+                                border-radius: 20px;
+                                color: #fff;
+                                background: rgb(25 118 210)
+                            }
+                        }
+
+                    }
+
+                }
+            }
+        }
+        .sub-2 {
+            .list-item-btn {
+                padding: 0px;
+                height: 40px;
+                display: flex;
+                gap: .7rem;
+
+                .list-item-checkbox-btn {
+                    min-width: 0px;
+
+                    .list-item-checkbox {
+                        padding: 0px;
+                    }
+                }
+            }
+        }
+
+        .icon-btn.clear-icon {
+            cursor: pointer;
+        }
+
+        .between {
+            .sub-main {
+                padding: 1.4rem;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        place-items: center;
+        justify-content: space-between;
+        padding: .5rem 1rem;
+    }
+}

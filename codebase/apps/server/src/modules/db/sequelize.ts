@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import { initBundleModel, initBundleProductModel, initProductModel } from "../models";
 
-const sequelize = new Sequelize('shopify-partners', 'postgres', 'postgres', {
+export const sequelize = new Sequelize('shopify-partners', 'postgres', 'postgres', {
   host: 'localhost',
   dialectModule: require('pg'),
   dialect: 'postgres',

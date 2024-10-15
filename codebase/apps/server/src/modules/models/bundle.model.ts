@@ -52,5 +52,5 @@ export async function initBundleModel(sequelize: Sequelize) {
         }
     );
 
-    await BundleModel.sync({ force: false, alter: true });
+    await BundleModel.sync({ force: false, alter: false });
 }

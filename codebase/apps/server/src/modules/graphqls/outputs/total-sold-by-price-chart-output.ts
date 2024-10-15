@@ -8,6 +8,9 @@ export const TotalSoldByPriceBarOrPieChartData = new GraphQLObjectType({
         },
         name: {
             type: new GraphQLNonNull(GraphQLString)
+        },
+        fill: {
+            type: GraphQLString
         }
     }
 });

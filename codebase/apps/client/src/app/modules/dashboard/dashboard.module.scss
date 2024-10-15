@@ -1,0 +1,71 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+.container {
+    .chart-container {
+        padding: .5em;
+        height: 96%;
+        cursor: grab;
+
+        .content {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border);
+            flex-direction: column;
+            border-radius: 8px;
+
+            .title {
+                font-weight: 600;
+                font-size: 20px;
+                padding: 1rem;
+                // padding-bottom: 0rem;
+            }
+
+            .chart-section {
+                display: grid;
+                width: 100%;
+                height: 100%;
+                grid-template-columns: 70% 30%;
+
+                .legend {
+                    display: flex;
+                    flex-direction: column;
+                    place-content: center;
+                    gap: 4px;
+
+                    .legend-item {
+                        display: flex;
+                        flex-direction: row;
+                        place-items: center;
+                        gap: 1rem;
+
+                        .legend-icon {
+                            width: 30px;
+                            height: 15px;
+                            border-radius: 1rem;
+                        }
+                    }
+                }
+
+                @media screen and (max-width: 1040px) {
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+
+                    .legend {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .table-container {
+        padding: 0.5em;
+        padding-right: .3em;
+    }
+}

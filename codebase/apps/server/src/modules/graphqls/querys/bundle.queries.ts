@@ -1,5 +1,5 @@
-import { GraphQLFieldConfig, GraphQLID, GraphQLNonNull, Source } from "graphql";
-import { BundleOutput, ListBundleOutput } from "../outputs";
+import { GraphQLFieldConfig, GraphQLID, GraphQLList, GraphQLNonNull, GraphQLString, Source } from "graphql";
+import { BundleOutput, BundleSearchOutput, ListBundleOutput } from "../outputs";
 import { BundleController } from "../../controllers";
 import { ListBundleInput } from "../../types/interfaces";
 import { ListBundlesInput } from "../inputs";
@@ -42,4 +42,17 @@ export const ListBundles: GraphQLFieldConfig<Source, Object, { listBundlesInput:
         isAuthenticated(context)
         return BundleController.FetchBundles(args.listBundlesInput)
     }
-} 
+}
+
+export const SearchBundles: GraphQLFieldConfig<Source, Object, { searchTerm: string }> = {
+    type: new GraphQLList(BundleSearchOutput),
+    args: {
+        searchTerm: {
+            type: new GraphQLNonNull(GraphQLString)
+        }
+    },
+    resolve: (_, args, context) => {
+        isAuthenticated(context)
+        return BundleController.SearchBundlesByName(args.searchTerm)
+    }
+}

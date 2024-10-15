@@ -1,0 +1,63 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+.side-nav {
+    border-right: 1px solid var(--border);
+    transition: width 0.3s ease;
+
+    >.list {
+        >.link {
+            color: var(--text-1);
+            cursor: pointer;
+            text-decoration: none;
+
+            &.active {
+                >.list-item-btn {
+                    background: var(--primary-3) !important;
+
+                    >.list-item-btn-icon {
+                        color: var(--text-1) !important;
+                    }
+
+                    >.list-item-btn-text {
+                        >span {
+                            font-weight: 700;
+                        }
+                    }
+                }
+
+            }
+
+            >.list-item-btn {
+                >.list-item-btn-text {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &.expanded {
+        >.list {
+            >.link {
+                >.list-item-btn {
+                    display: flex;
+                    place-content: center;
+                    place-items: center;
+                    gap: 14px;
+
+                    >.list-item-btn-icon {
+                        min-width: auto;
+                    }
+
+                    >.list-item-btn-text {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

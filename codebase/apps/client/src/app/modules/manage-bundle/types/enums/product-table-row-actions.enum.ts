@@ -1,0 +1,4 @@
+export enum ProductTableRowActions {
+    VIEW_PRODUCT_DETAILS = 'VIEW_PRODUCT_DETAILS',
+    SELECT_PRODUCT = 'SELECT_PRODUCT'
+}
