@@ -4,6 +4,8 @@ if nx command not working try installing nx globally
 (Optional)
 npm i nx -g
 
+install postgres and create database shopify-partners
+
 If you are using nx extension in vs code it will be easy to start applicatons using gui
 
 
@@ -31,4 +33,4 @@ once done you can start launching the fe application
 
 once you logged in i have consoled the access token on console copy and use it on Authorization headers on graphql to make use of graphql apis
 
-As for now i have done BE and from today i will start FE works for creating bundles and analyzing bundles via dashboard
+Fe is completed and im working on deployment part
